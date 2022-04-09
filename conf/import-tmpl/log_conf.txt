@@ -1,0 +1,2 @@
+enable_logs: 0x999999
+log_zeny: 1000000

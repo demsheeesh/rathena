@@ -1,0 +1,127 @@
+snap_dodge: yes
+wedding_modifydisplay: yes
+wedding_ignorepalette: yes
+emblem_woe_change: no
+emblem_transparency_limit: 60
+
+item_first_get_time: 30000
+mvp_item_first_get_time: 30000
+
+// The rate the common items are dropped (Items that are in the ETC tab, besides card)
+item_rate_common: 2500
+item_rate_common_boss: 2500
+item_rate_common_mvp: 2500
+item_drop_common_min: 1
+item_drop_common_max: 10000
+// The rate healing items are dropped (items that restore HP or SP)
+item_rate_heal: 2500
+item_rate_heal_boss: 2500
+item_rate_heal_mvp: 2500
+item_drop_heal_min: 1
+item_drop_heal_max: 10000
+// The rate at which usable items (in the item tab) other then healing items are dropped.
+item_rate_use: 2500
+item_rate_use_boss: 2500
+item_rate_use_mvp: 2500
+item_drop_use_min: 1
+item_drop_use_max: 10000
+// The rate at which equipment is dropped.
+item_rate_equip: 2500
+item_rate_equip_boss: 2500
+item_rate_equip_mvp: 2500
+item_drop_equip_min: 1
+item_drop_equip_max: 10000
+// The rate at which cards are dropped
+item_rate_card: 4500
+item_rate_card_boss: 500
+item_rate_card_mvp: 500
+item_drop_card_min: 1
+item_drop_card_max: 10000
+// The rate adjustment for the MVP items that the MVP gets directly in their inventory
+// Mode: 0 - official order, 1 - random order, 2 - all items
+item_rate_mvp: 2500
+item_drop_mvp_min: 1
+item_drop_mvp_max: 10000
+item_drop_mvp_mode: 0
+// The rate adjustment for card-granted item drops.
+item_rate_adddrop: 2500
+item_drop_add_min: 1
+item_drop_add_max: 10000
+
+alchemist_summon_reward: 0
+rare_drop_announce: 20
+
+base_exp_rate: 4500
+job_exp_rate: 4000
+multi_level_up: yes
+mvp_exp_rate: 4500
+quest_exp_rate: 3000
+
+feature.atcommand_suggestions: on
+feature.banking: off
+feature.refineui: off
+feature.roulette: off
+feature.homunculus_autofeed_rate: 15
+feature.attendance: off
+// Barter Shop System (Note 1)
+// Requires: 2019-01-16RagexeRE or later
+feature.barter: off
+
+// Extended Barter Shop System (Note 1)
+// Requires: 2019-11-06RagexeRE or later
+feature.barter_extended: off
+
+ban_hack_trade: 69
+guild_exp_limit: 80
+max_guild_alliance: 1
+guild_notice_changemap: 0
+
+homunculus_friendly_rate: 800
+homunculus_autoloot: yes
+hom_idle_no_share: 30
+idletime_hom_option: 0x08
+
+vending_tax: 100
+item_enabled_npc: no
+rental_transaction: no
+
+duel_time_interval: 10
+at_mapflag: yes
+cashshop_show_points: yes
+mon_trans_disable_in_gvg: yes
+hide_fav_sell: yes
+
+mvp_hp_rate: 150
+ksprotection: 5000
+mvp_tomb_delay: 5000
+
+party_even_share_bonus: 10
+idle_no_share: 30
+change_party_leader_samemap: no
+block_account_in_same_party: no
+display_party_name: yes
+
+pet_friendly_rate: 800
+pet_disable_in_gvg: yes
+
+max_baby_parameter: 99
+max_def: 80
+show_hp_sp_drain: yes
+
+idle_no_autoloot: 30
+
+min_skill_delay_limit: 200
+default_walk_delay: 200
+clear_skills_on_death: 1
+devotion_rdamage: 100
+backstab_bow_penalty: no
+skip_teleport_lv1_menu: yes
+sg_miracle_skill_ratio: 100
+dancing_weaponswitch_fix: no
+bowling_bash_area: 1
+taekwon_mission_mobname:1
+teleport_on_portal: no
+cart_revo_knockback: no
+land_protector_behavior: 1
+dispel_song: yes
+switch_remove_edp: 0

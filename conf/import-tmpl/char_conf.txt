@@ -1,0 +1,11 @@
+server_name: RagnarokTournament
+start_point_pre: new_1-1,53,111
+start_items: 1209,1,2
+start_zeny: 10000
+char_del_delay: 2
+char_del_option: 2
+pincode_enabled: no
+
+
+userid: montagne2kkLola
+passwd: Mp1phEn9h0__
