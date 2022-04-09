@@ -87,7 +87,14 @@ Header:
   Type: ITEM_DB
   Version: 2
 
-#Body:
+Body:
+    - Id: 7804
+      AegisName: Battleground_Badge
+      Name: Battleground Badge
+      Type: Etc
+      Buy: 0
+      Sell: 0
+      Weight: 0
 # THQ Quest Items
 #=============================================================
 #  - Id: 1998

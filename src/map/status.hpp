@@ -1004,7 +1004,7 @@ enum sc_type : int16 {
 	SC_EP16_2_BUFF_SS,
 	SC_EP16_2_BUFF_SC,
 	SC_EP16_2_BUFF_AC,
-	
+
 	// Job Improvement Bundle
 	SC_OVERBRANDREADY,
 	SC_POISON_MIST,
@@ -1033,6 +1033,7 @@ enum sc_type : int16 {
 	SC_WIDEWEB,
 	SC_BURNT,
 	SC_CHILL,
+	SC_FULLINVINCIBLE,
 
 	// 4th Job Common Status
 	SC_HANDICAPSTATE_DEEPBLIND,
@@ -2314,6 +2315,8 @@ enum efst_type : short{
 
 	EFST_PRESSURE = 1180,
 
+
+	EFST_FULLINVINCIBLE = 1181,
 	EFST_CLIMAX_EARTH = 1182,
 	EFST_CLIMAX_BLOOM,
 	EFST_CLIMAX_CRYIMP,

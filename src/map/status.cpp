@@ -558,7 +558,7 @@ efst_type StatusDatabase::getIcon(sc_type type) {
 /**
  * Get flag of SC (SCB value) for status_calc_ flag
  * @param type: SC type
- * @return cal_flag: Calc value 
+ * @return cal_flag: Calc value
  **/
 std::bitset<SCB_MAX> StatusDatabase::getCalcFlag(sc_type type) {
 	std::shared_ptr<s_status_change_db> status = status_db.find(type);
@@ -793,7 +793,7 @@ int status_set_maxhp(struct block_list *bl, unsigned int maxhp, int flag)
  * @param bl: Object whose SP will be set [PC|HOM|MER|ELEM]
  * @param sp: What the SP is to be set as
  * @param flag: Used in case final value is higher than current
- *		Use 2 to display healing effect		
+ *		Use 2 to display healing effect
  * @return heal or zapped SP if valid
  */
 int status_set_sp(struct block_list *bl, unsigned int sp, int flag)
@@ -898,7 +898,7 @@ int status_set_maxap(struct block_list *bl, unsigned int maxap, int flag)
  * Takes HP/SP from an Object
  * @param bl: Object who will have HP/SP taken [PC|MOB|HOM|MER|ELEM]
  * @param hp: How much HP to charge
- * @param sp: How much SP to charge	
+ * @param sp: How much SP to charge
  * @return hp+sp through status_damage()
  * Note: HP/SP are integer values, not percentages. Values should be
  *	 calculated either within function call or before
@@ -1285,8 +1285,8 @@ int status_heal(struct block_list *bl,int64 hhp,int64 hsp, int64 hap, int flag)
  * @param sp_rate: Percentage of SP to modify. If > 0:percent is of current SP, if < 0:percent is of max SP
  * @param ap_rate: Percentage of AP to modify. If > 0:percent is of current AP, if < 0:percent is of max AP
  * @param flag: \n
- *		0: Heal target \n 
- *		1: Use status_damage \n 
+ *		0: Heal target \n
+ *		1: Use status_damage \n
  *		2: Use status_damage and make sure target must not die from subtraction
  * @return hp+sp+ap through status_heal()
  */
@@ -1607,6 +1607,8 @@ bool status_check_skilluse(struct block_list *src, struct block_list *target, ui
 		* Attacks in invincible are capped to 1 damage and handled in battle.cpp.
 		* Allow spell break and eske for sealed shrine GDB when in INVINCIBLE state.
 		**/
+		if (tsc->data[SC_FULLINVINCIBLE])
+			return false;
 		if( tsc->data[SC_INVINCIBLE] && !tsc->data[SC_INVINCIBLEOFF] && skill_id && !(skill_id&(SA_SPELLBREAKER|SL_SKE)) )
 			return false;
 		if(!skill_id && tsc->data[SC_TRICKDEAD])
@@ -1996,7 +1998,7 @@ void status_calc_misc(struct block_list *bl, struct status_data *status, int lev
 		status->cri = status->flee2 =
 		status->patk = status->smatk =
 		status->hplus = status->crate = 0;
-		
+
 		if (bl->type != BL_MOB)	// BL_MOB has values set when loading mob_db
 			status->res = status->mres = 0;
 
@@ -2278,9 +2280,7 @@ int status_calc_mob_(struct mob_data* md, uint8 opt)
 		struct map_data *mapdata = map_getmapdata(md->bl.m);
 		std::shared_ptr<guild_castle> gc = castle_db.mapname2gc(mapdata->name);
 
-		if (gc == nullptr)
-			ShowError("status_calc_mob: No castle set at map %s\n", mapdata->name);
-		else if(gc->castle_id < 24 || md->mob_id == MOBID_EMPERIUM) {
+		if(gc && (gc->castle_id < 24 || md->mob_id == MOBID_EMPERIUM)) {
 #ifdef RENEWAL
 			status->max_hp += 50 * (gc->defense / 5);
 #else
@@ -2305,7 +2305,7 @@ int status_calc_mob_(struct mob_data* md, uint8 opt)
 		// Remove special AI when this is used by regular mobs.
 		if (mbl->type == BL_MOB && !((TBL_MOB*)mbl)->special_state.ai)
 			md->special_state.ai = AI_NONE;
-		if (ud) { 
+		if (ud) {
 			// Different levels of HP according to skill level
 			if(!ud->skill_id) // !FIXME: We lost the unit data for magic decoy in somewhere before this
 				ud->skill_id = ((TBL_PC*)mbl)->menuskill_id;
@@ -3461,7 +3461,7 @@ int status_calc_pc_sub(struct map_session_data* sd, uint8 opt)
 			continue;
 		if (pc_is_same_equip_index((enum equip_index)i, sd->equip_index, index))
 			continue;
-		
+
 		if (sd->inventory_data[index]) {
 			for (uint8 j = 0; j < MAX_ITEM_RDM_OPT; j++) {
 				short opt_id = sd->inventory.u.items_inventory[index].option[j].id;
@@ -3815,7 +3815,7 @@ int status_calc_pc_sub(struct map_session_data* sd, uint8 opt)
 #endif
 	if ((skill = pc_checkskill(sd, SHC_SHADOW_SENSE)) > 0)
 	{
-		if (sd->status.weapon == W_DAGGER || sd->status.weapon == W_DOUBLE_DD || 
+		if (sd->status.weapon == W_DAGGER || sd->status.weapon == W_DOUBLE_DD ||
 			sd->status.weapon == W_DOUBLE_DS || sd->status.weapon == W_DOUBLE_DA)
 			base_status->cri += 100 + skill * 40;
 		else if (sd->status.weapon == W_KATAR)
@@ -7900,10 +7900,10 @@ static unsigned int status_calc_maxsp(struct block_list *bl, uint64 maxsp)
 	int rate = 100;
 
 	maxsp += status_get_spbonus(bl,STATUS_BONUS_FIX);
-	
+
 	if ((rate += status_get_spbonus(bl,STATUS_BONUS_RATE)) != 100)
 		maxsp = maxsp * rate / 100;
-	
+
 	return (unsigned int)cap_value(maxsp,1,UINT_MAX);
 }
 
@@ -7986,7 +7986,7 @@ static unsigned char status_calc_element_lv(struct block_list *bl, struct status
 		return 1;
 	if(sc->data[SC__INVISIBILITY])
 		return 1;
-	if (sc->data[SC_FLAMEARMOR_OPTION] || sc->data[SC_CRYSTAL_ARMOR_OPTION] || sc->data[SC_EYES_OF_STORM_OPTION] || 
+	if (sc->data[SC_FLAMEARMOR_OPTION] || sc->data[SC_CRYSTAL_ARMOR_OPTION] || sc->data[SC_EYES_OF_STORM_OPTION] ||
 		sc->data[SC_STRONG_PROTECTION_OPTION] || sc->data[SC_POISON_SHIELD_OPTION])
 		return 1;
 
@@ -8390,7 +8390,7 @@ std::vector<e_race2> status_get_race2(struct block_list *bl)
 }
 
 /**
- * Checks if an object is dead 
+ * Checks if an object is dead
  * @param bl: Object to check [PC|MOB|HOM|MER|ELEM]
  * @return 1: Is dead or 0: Is alive
  */
@@ -8401,7 +8401,7 @@ int status_isdead(struct block_list *bl)
 }
 
 /**
- * Checks if an object is immune to magic 
+ * Checks if an object is immune to magic
  * @param bl: Object to check [PC|MOB|HOM|MER|ELEM]
  * @return value of magic damage to be blocked
  */
@@ -8424,7 +8424,7 @@ int status_isimmune(struct block_list *bl)
 }
 
 /**
- * Get view data of an object 
+ * Get view data of an object
  * @param bl: Object whose view data to get [PC|MOB|PET|HOM|MER|ELEM|NPC]
  * @return view data structure bl->vd
  */
@@ -8446,7 +8446,7 @@ struct view_data* status_get_viewdata(struct block_list *bl)
 /**
  * Set view data of an object
  * This function deals with class, mount, and item views
- * SC views are set in clif_getareachar_unit() 
+ * SC views are set in clif_getareachar_unit()
  * @param bl: Object whose view data to set [PC|MOB|PET|HOM|MER|ELEM|NPC]
  * @param class_: class of the object
  */
@@ -9357,7 +9357,7 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 					successFlag|=1;
 					pc_unequipitem(sd,i,3); // Left-hand weapon
 				}
-	
+
 				i = sd->equip_index[EQI_HAND_R];
 				if (i>=0 && sd->inventory_data[i] && sd->inventory_data[i]->type == IT_WEAPON) {
 					successFlag|=2;
@@ -10942,7 +10942,7 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 			break;
 		case SC__UNLUCKY:
 		{
-			sc_type rand_eff; 
+			sc_type rand_eff;
 			switch(rnd() % 3) {
 				case 1: rand_eff = SC_BLIND; break;
 				case 2: rand_eff = SC_SILENCE; break;
@@ -12827,7 +12827,7 @@ int status_change_end_(struct block_list* bl, enum sc_type type, int tid, const 
 			clif_specialeffect(bl, 223, AREA);
 			clif_specialeffect(bl, 330, AREA);
 			break;
-			
+
 		case SC_OVERED_BOOST:
 			switch (bl->type) {
 				case BL_HOM: {
@@ -12982,6 +12982,12 @@ int status_change_end_(struct block_list* bl, enum sc_type type, int tid, const 
 		if (vd && !vd->cloth_color && sce->val4)
 			clif_changelook(bl,LOOK_CLOTHES_COLOR,sce->val4);
 		calc_flag.reset(SCB_DYE);
+
+				// [Vykimo] Put palette to players if any
+			std::shared_ptr<s_battleground_data> bg;
+				if (sd && sd->bg_id && (bg = util::umap_find(bg_team_db, sd->bg_id)) && bg->palette) {
+					clif_changelook(&sd->bl, LOOK_CLOTHES_COLOR, bg->palette);
+				}
 	}
 
 	/*if (calc_flag[SCB_BODY])// Might be needed in the future. [Rytech]
@@ -13012,6 +13018,19 @@ int status_change_end_(struct block_list* bl, enum sc_type type, int tid, const 
 			clif_changelook(bl,LOOK_SHIELD,sd->vd.shield);
 			clif_changelook(bl,LOOK_CLOTHES_COLOR,cap_value(sd->status.clothes_color,0,battle_config.max_cloth_color));
 			clif_changelook(bl,LOOK_BODY2,cap_value(sd->status.body,0,battle_config.max_body_style));
+
+						// [Vykimo] Put palette to players if any
+						std::shared_ptr<s_battleground_data> bg;
+						if (sd && sd->bg_id && (bg = util::umap_find(bg_team_db, sd->bg_id)) && bg->palette) {
+							clif_changelook(&sd->bl, LOOK_CLOTHES_COLOR, bg->palette);
+						}
+					}
+					else if (sd && opt_flag[SCF_ONTOUCH]) {
+						// [Vykimo] Put palette to players if any
+						std::shared_ptr<s_battleground_data> bg;
+						if (sd && sd->bg_id && (bg = util::umap_find(bg_team_db, sd->bg_id)) && bg->palette) {
+							clif_changelook(&sd->bl, LOOK_CLOTHES_COLOR, bg->palette);
+						}
 		}
 	}
 	if (calc_flag.any()) {
@@ -13066,7 +13085,7 @@ TIMER_FUNC(status_change_timer){
 		ShowDebug("status_change_timer: Null pointer id: %d data: %" PRIdPTR " bl-type: %d\n", id, data, bl->type);
 		return 0;
 	}
-	
+
 	struct status_change_entry * const sce = sc->data[type];
 	if(!sce) {
 		ShowDebug("status_change_timer: Null pointer id: %d data: %" PRIdPTR " bl-type: %d\n", id, data, bl->type);
@@ -13082,7 +13101,7 @@ TIMER_FUNC(status_change_timer){
 	std::function<void (t_tick)> sc_timer_next = [&sce, &bl, &data](t_tick t) {
 		sce->timer = add_timer(t, status_change_timer, bl->id, data);
 	};
-	
+
 	switch(type) {
 	case SC_MAXIMIZEPOWER:
 	case SC_CLOAKING:
@@ -13179,7 +13198,7 @@ TIMER_FUNC(status_change_timer){
 			status_fix_damage(bl, bl, damage, clif_damage(bl, bl, tick, 0, 1, damage, 1, DMG_NORMAL, 0, false),0);
 		}
 		break;
-		
+
 	case SC_TOXIN:
 		if (sce->val4 >= 0) { // Damage is every 10 seconds including 3%sp drain.
 			if (sce->val3 == 1) { // Target
@@ -13239,7 +13258,7 @@ TIMER_FUNC(status_change_timer){
 			}
 		}
 		break;
-		
+
 	case SC_PYREXIA:
 		if (sce->val4 >= 0) {
 			map_freeblock_lock();
@@ -13247,7 +13266,7 @@ TIMER_FUNC(status_change_timer){
 			status_fix_damage(bl, bl, 100, clif_damage(bl, bl, tick, status->amotion, status->dmotion + 500, 100, 1, DMG_NORMAL, 0, false),0);
 		}
 		break;
-		
+
 	case SC_LEECHESEND:
 		if (sce->val4 >= 0) {
 			int64 damage = status->vit * (sce->val1 - 3) + (int)status->max_hp / 100; // {Target VIT x (New Poison Research Skill Level - 3)} + (Target HP/100)
@@ -13448,7 +13467,7 @@ TIMER_FUNC(status_change_timer){
 			sc_timer_next(10000+tick);
 		}
 		break;
-		
+
 	case SC_OBLIVIONCURSE:
 		if( --(sce->val4) >= 0 ) {
 			clif_emotion(bl,ET_QUESTION);
@@ -14132,7 +14151,7 @@ int status_change_timer_sub(struct block_list* bl, va_list ap)
 			status_check_skilluse(src, bl, WZ_SIGHTBLASTER, 2))
 		{
 			if (sce) {
-				struct skill_unit *su = NULL; 
+				struct skill_unit *su = NULL;
 				if(bl->type == BL_SKILL)
 					su = (struct skill_unit *)bl;
 				if (skill_attack(BF_MAGIC,src,src,bl,WZ_SIGHTBLASTER,sce->val1,tick,0x1000000)
@@ -14201,7 +14220,7 @@ void status_change_clear_buffs(struct block_list* bl, uint8 type)
 			continue;
 		// &SCCB_BUFFS : Clears buffs
 		if (!(type&SCCB_BUFFS) && !(flag[SCF_DEBUFF]))
-			continue;		
+			continue;
 		if (status == SC_SATURDAYNIGHTFEVER || status == SC_BERSERK) // Mark to not lose HP
 			sc->data[status]->val2 = 0;
 		status_change_end(bl, status, INVALID_TIMER);
@@ -14692,7 +14711,7 @@ uint64 StatusDatabase::parseBodyNode(const ryml::NodeRef& node) {
 			this->invalidWarning(node["Icon"], "Icon %s is invalid, defaulting to EFST_BLANK.\n", icon_name.c_str());
 			constant = EFST_BLANK;
 		}
-		
+
 		if (constant < EFST_BLANK || constant >= EFST_MAX) {
 			this->invalidWarning(node["Icon"], "Icon %s is out of bounds, defaulting to EFST_BLANK.\n", icon_name.c_str());
 			constant = EFST_BLANK;
@@ -14985,7 +15004,7 @@ uint64 StatusDatabase::parseBodyNode(const ryml::NodeRef& node) {
 		if (!exists)
 			status->min_rate = 0;
 	}
-	
+
 	if (this->nodeExists(node, "MinDuration")) {
 		int64 duration;
 

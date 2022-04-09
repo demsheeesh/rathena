@@ -57,3 +57,425 @@
 Header:
   Type: BATTLEGROUND_DB
   Version: 1
+
+Body:
+  - Id: 1
+    Name: Capture the Flag
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0xA0522D
+    Variable: BG_CTF
+    RewardWinner: 15
+    RewardDraw: 6
+    RewardLooser: 6
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_ctf
+        StartEvent: Flavius_CTF::OnReady
+        PrematureEndEvent: Flavius_CTF::OnPrematureEnd
+        TeamA:
+          RespawnX: 228
+          RespawnY: 39
+          QuitEvent: Flavius_CTF::OnTeam1Quit
+          DeathEvent: Flavius_CTF::OnTeam1Die
+          ActiveEvent: Flavius_CTF::OnBGTeam1Active
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 30
+          RespawnY: 38
+          QuitEvent: Flavius_CTF::OnTeam2Quit
+          DeathEvent: Flavius_CTF::OnTeam2Die
+          ActiveEvent: Flavius_CTF::OnBGTeam2Active
+          Variable: $@BG_Team2
+          Palette: 409
+  - Id: 2
+    Name: Team DeathMatch
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0x808000
+    Variable: BG_TDM
+    RewardWinner: 15
+    RewardDraw: 6
+    RewardLooser: 6
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_tdm
+        StartEvent: Flavius_TD::OnReady
+        PrematureEndEvent: Flavius_TD::OnPrematureEnd
+        TeamA:
+          RespawnX: 44
+          RespawnY: 99
+          QuitEvent: Flavius_TD::OnTeam1Quit
+          DeathEvent: Flavius_TD::OnTeam1Die
+          ActiveEvent: Flavius_TD::OnBGTeam1Active
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 100
+          RespawnY: 43
+          QuitEvent: Flavius_TD::OnTeam2Quit
+          DeathEvent: Flavius_TD::OnTeam2Die
+          ActiveEvent: Flavius_TD::OnBGTeam2Active
+          Variable: $@BG_Team2
+          Palette: 409
+  - Id: 3
+    Name: Eye of Storm
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0x4169E1
+    Variable: BG_EOE
+    RewardWinner: 9
+    RewardDraw: 6
+    RewardLooser: 3
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_eoe
+        StartEvent: Tierra_EOS::OnReady
+        PrematureEndEvent: Tierra_EOS::OnPrematureEnd
+        TeamA:
+          RespawnX: 14
+          RespawnY: 15
+          QuitEvent: Tierra_EOS::OnTeam1Quit
+          DeathEvent: Tierra_EOS::OnTeam1Die
+          ActiveEvent: Tierra_EOS::OnBGTeam1Active
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 189
+          RespawnY: 161
+          QuitEvent: Tierra_EOS::OnTeam2Quit
+          DeathEvent: Tierra_EOS::OnTeam2Die
+          ActiveEvent: Tierra_EOS::OnBGTeam2Active
+          Variable: $@BG_Team2
+          Palette: 409
+  - Id: 4
+    Name: Conquest
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0xFFA500
+    Variable: BG_CON
+    RewardWinner: 10
+    RewardDraw: 0
+    RewardLooser: 5
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_con01
+        StartEvent: Conquest::OnReady
+        PrematureEndEvent: Conquest::OnPrematureEnd
+        TeamA:
+          RespawnX: 264
+          RespawnY: 379
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 295
+          RespawnY: 379
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_con02
+        StartEvent: Conquest::OnReady
+        PrematureEndEvent: Conquest::OnPrematureEnd
+        TeamA:
+          RespawnX: 90
+          RespawnY: 311
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 113
+          RespawnY: 311
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_con03
+        StartEvent: Conquest::OnReady
+        PrematureEndEvent: Conquest::OnPrematureEnd
+        TeamA:
+          RespawnX: 28
+          RespawnY: 50
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 87
+          RespawnY: 50
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_con04
+        StartEvent: Conquest::OnReady
+        PrematureEndEvent: Conquest::OnPrematureEnd
+        TeamA:
+          RespawnX: 30
+          RespawnY: 381
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 126
+          RespawnY: 357
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_con05
+        StartEvent: Conquest::OnReady
+        PrematureEndEvent: Conquest::OnPrematureEnd
+        TeamA:
+          RespawnX: 298
+          RespawnY: 339
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 298
+          RespawnY: 308
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_con06
+        StartEvent: Conquest::OnReady
+        PrematureEndEvent: Conquest::OnPrematureEnd
+        TeamA:
+          RespawnX: 313
+          RespawnY: 154
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 330
+          RespawnY: 154
+          QuitEvent: Conquest::OnTeamQuit
+          ActiveEvent: Conquest::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+  - Id: 5
+    Name: Kreiger Von Midgard
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0x00BFFF
+    Variable: BG_KVM
+    RewardWinner: 9
+    RewardDraw: 6
+    RewardLooser: 3
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_kvm
+        StartEvent: KvM01_BG::OnReady
+        PrematureEndEvent: KvM01_BG::OnPrematureEnd
+        TeamA:
+          RespawnX: 53
+          RespawnY: 128
+          QuitEvent: KvM01_BG::OnTeam1Quit
+          DeathEvent: KvM01_BG::OnTeam1Die
+          ActiveEvent: KvM01_BG::OnBGTeam1Active
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 146
+          RespawnY: 55
+          QuitEvent: KvM01_BG::OnTeam2Quit
+          DeathEvent: KvM01_BG::OnTeam2Die
+          ActiveEvent: KvM01_BG::OnBGTeam2Active
+          Variable: $@BG_Team2
+          Palette: 409
+  - Id: 6
+    Name: Stone Control
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0x9ACD32
+    Variable: BG_SC
+    RewardWinner: 15
+    RewardDraw: 6
+    RewardLooser: 6
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_sc
+        StartEvent: Flavius_SC::OnReady
+        PrematureEndEvent: Flavius_SC::OnPrematureEnd
+        TeamA:
+          RespawnX: 172
+          RespawnY: 122
+          QuitEvent: Flavius_SC::OnTeam1Quit
+          DeathEvent: Flavius_SC::OnTeam1Die
+          ActiveEvent: Flavius_SC::OnBGTeam1Active
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 28
+          RespawnY: 57
+          QuitEvent: Flavius_SC::OnTeam2Quit
+          DeathEvent: Flavius_SC::OnTeam2Die
+          ActiveEvent: Flavius_SC::OnBGTeam2Active
+          Variable: $@BG_Team2
+          Palette: 409
+  - Id: 7
+    Name: Domination
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0xE16941
+    Variable: BG_DOM
+    RewardWinner: 9
+    RewardDraw: 6
+    RewardLooser: 3
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_dom
+        StartEvent: Tierra_DOM::OnReady
+        PrematureEndEvent: Tierra_DOM::OnPrematureEnd
+        TeamA:
+          RespawnX: 172
+          RespawnY: 122
+          QuitEvent: Tierra_DOM::OnTeamQuit
+          DeathEvent: Tierra_DOM::OnTeamDie
+          ActiveEvent: Tierra_DOM::OnBGTeam1Active
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 28
+          RespawnY: 57
+          QuitEvent: Tierra_DOM::OnTeamQuit
+          DeathEvent: Tierra_DOM::OnTeamDie
+          ActiveEvent: Tierra_DOM::OnBGTeam2Active
+          Variable: $@BG_Team2
+          Palette: 409
+  - Id: 8
+    Name: Rush
+    MinPlayers: 2
+    MaxPlayers: 15
+    MinLevel: 80
+    Deserter: 300
+    StartDelay: 0
+    Color: 0xDDA0DD
+    Variable: BG_RUSH
+    RewardWinner: 10
+    RewardDraw: 5
+    RewardLooser: 5
+    Join:
+      Solo: true
+      Party: false
+      Guild: false
+    Locations:
+      - Map: bg_rush01
+        StartEvent: Rush::OnReady
+        PrematureEndEvent: Rush::OnPrematureEnd
+        TeamA:
+          RespawnX: 202
+          RespawnY: 230
+          QuitEvent: Rush::OnTeam1Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 202
+          RespawnY: 226
+          QuitEvent: Rush::OnTeam2Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_rush02
+        StartEvent: Rush::OnReady
+        PrematureEndEvent: Rush::OnPrematureEnd
+        TeamA:
+          RespawnX: 146
+          RespawnY: 50
+          QuitEvent: Rush::OnTeam1Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 146
+          RespawnY: 46
+          QuitEvent: Rush::OnTeam2Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_rush03
+        StartEvent: Rush::OnReady
+        PrematureEndEvent: Rush::OnPrematureEnd
+        TeamA:
+          RespawnX: 60
+          RespawnY: 13
+          QuitEvent: Rush::OnTeam1Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 64
+          RespawnY: 13
+          QuitEvent: Rush::OnTeam2Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
+      - Map: bg_rush04
+        StartEvent: Rush::OnReady
+        PrematureEndEvent: Rush::OnPrematureEnd
+        TeamA:
+          RespawnX: 270
+          RespawnY: 292
+          QuitEvent: Rush::OnTeam1Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team1
+          Palette: 376
+        TeamB:
+          RespawnX: 270
+          RespawnY: 288
+          QuitEvent: Rush::OnTeam2Quit
+          ActiveEvent: Rush::OnBGTeamActive
+          Variable: $@BG_Team2
+          Palette: 409
