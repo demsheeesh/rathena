@@ -2705,9 +2705,6 @@ Body:
       NoClearance: true
     End:
       Invincibleoff: true
-  - Status: FULLINVINCIBILE
-    Icon: EFST_FULLINVINCIBLE
-      NoWarning: true
   - Status: Invincibleoff
     DurationLookup: NPC_INVINCIBLEOFF
     CalcFlags:

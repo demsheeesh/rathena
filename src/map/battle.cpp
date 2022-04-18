@@ -3539,7 +3539,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 
 				battle_calc_damage_parts(wd, src, target, skill_id, skill_lv);
 				wd->masteryAtk = 0; // weapon mastery is ignored for spiral
-				
+
 				switch (tstatus->size) { //Size-fix. Is this modified by weapon perfection?
 					case SZ_SMALL: //Small: 115%
 						ATK_RATE(wd->damage, wd->damage2, 115);
@@ -3722,7 +3722,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 				if((sd->status.party_id || map_getmapflag(sd->bl.m, MF_BATTLEGROUND)) && (skill=pc_checkskill(sd,TK_POWER)) > 0) {
 					if( (i = party_foreachsamemap(party_sub_count, sd, 0)) > 1 ) { // exclude the player himself [Inkfish]
 						// Reduce count by one (self) [Tydus1]
-						i -= 1; 
+						i -= 1;
 						ATK_ADDRATE(wd->damage, wd->damage2, 2*skill*i);
 						RE_ALLATK_ADDRATE(wd, 2*skill*i);
 					}
@@ -4121,7 +4121,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 #endif
 			break;
 		case MO_EXTREMITYFIST:
-			skillratio += 100 * (7 + sstatus->sp / 10);			
+			skillratio += 100 * (7 + sstatus->sp / 10);
 #ifdef RENEWAL
 			if (wd->miscflag&1)
 				skillratio *= 2; // More than 5 spirit balls active
@@ -4534,7 +4534,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			if (sc && sc->data[SC_FEARBREEZE])
 				skillratio += -100 + 800 + 35 * skill_lv;
 			else
-				skillratio += -100 + 500 + 20 * skill_lv;	
+				skillratio += -100 + 500 + 20 * skill_lv;
 			RE_LVL_DMOD(100);
 			break;
 		case RA_CLUSTERBOMB:
@@ -4765,9 +4765,9 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			break;
 		case SR_HOWLINGOFLION:
 			skillratio += -100 + 500 * skill_lv;
-			RE_LVL_DMOD(100);	
+			RE_LVL_DMOD(100);
 			break;
-		case SR_RIDEINLIGHTNING: 
+		case SR_RIDEINLIGHTNING:
 			skillratio += -100 + 40 * skill_lv;
 			if (sd && sd->status.weapon == W_KNUCKLE)
 				skillratio += 50 * skill_lv;
