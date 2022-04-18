@@ -4488,6 +4488,8 @@ Body:
       NoBanishingBuster: true
     Fail:
       Inspiration: true
+  - Status: FULLINVINCIBLE
+  Icon: EFST_FULLINVINCIBLE
   - Status: _Invisibility
     Icon: EFST_INVISIBILITY
     DurationLookup: SC_INVISIBILITY
