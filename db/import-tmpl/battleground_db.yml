@@ -61,7 +61,7 @@ Header:
 Body:
   - Id: 1
     Name: Capture the Flag
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
@@ -97,7 +97,7 @@ Body:
           Palette: 409
   - Id: 2
     Name: Team DeathMatch
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
@@ -133,7 +133,7 @@ Body:
           Palette: 409
   - Id: 3
     Name: Eye of Storm
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
@@ -169,7 +169,7 @@ Body:
           Palette: 409
   - Id: 4
     Name: Conquest
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
@@ -288,7 +288,7 @@ Body:
           Palette: 409
   - Id: 5
     Name: Kreiger Von Midgard
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
@@ -324,7 +324,7 @@ Body:
           Palette: 409
   - Id: 6
     Name: Stone Control
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
@@ -360,7 +360,7 @@ Body:
           Palette: 409
   - Id: 7
     Name: Domination
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
@@ -396,7 +396,7 @@ Body:
           Palette: 409
   - Id: 8
     Name: Rush
-    MinPlayers: 2
+    MinPlayers: 1
     MaxPlayers: 15
     MinLevel: 80
     Deserter: 300
