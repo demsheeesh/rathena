@@ -3011,7 +3011,6 @@
 	export_constant(EFST_REUSE_LIMIT_E);
 	export_constant(EFST_REUSE_LIMIT_F);
 	export_constant(EFST_INVINCIBLE);
-	export_constant(EFST_FULLINVINCIBLE);
 	export_constant(EFST_CASH_PLUSONLYJOBEXP);
 	export_constant(EFST_PARTYFLEE);
 	export_constant(EFST_ANGEL_PROTECT);

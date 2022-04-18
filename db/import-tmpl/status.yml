@@ -42,3 +42,7 @@
 Header:
   Type: STATUS_DB
   Version: 2
+
+Body:
+  -Status: Full_Invincible
+  Icon: EFST_FULLINVINCIBLE

@@ -2715,10 +2715,6 @@ Body:
       NoClearance: true
     End:
       Invincible: true
-  - Status: Full_Invincible
-    Icon: EFST_FULLINVINCIBLE
-    CalcFlags:
-      Speed: true
   - Status: Manu_Atk
     Icon: EFST_MANU_ATK
     Flags:
