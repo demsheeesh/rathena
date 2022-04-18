@@ -6557,14 +6557,14 @@ enum e_setpos pc_setpos(struct map_session_data* sd, unsigned short mapindex, in
 	else
 		sd->count_rewarp = 0;
 
-		union u_mapflag_args args = {};
-		if(map_getmapflag_sub(m, MF_BATTLEGROUND, &args) && battle_config.bg_invincible_time > 0)
-			sc_start(NULL, &sd->bl, SC_FULLINVINCIBLE, 10000, 1, battle_config.bg_invincible_time);
-
 	if (sd->state.vending)
 		vending_update(*sd);
 	if (sd->state.buyingstore)
 		buyingstore_update(*sd);
+
+		union u_mapflag_args args = {};
+		if(map_getmapflag_sub(m, MF_BATTLEGROUND, &args) && battle_config.bg_invincible_time > 0)
+			sc_start(NULL, &sd->bl, SC_FULLINVINCIBLE, 10000, 1, battle_config.bg_invincible_time);
 
 	return SETPOS_OK;
 }
