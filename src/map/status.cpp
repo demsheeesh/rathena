@@ -10734,7 +10734,8 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 			// Place here SCs that have no SCB_* data, no skill associated, no ICON
 			// associated, and yet are not wrong/unknown. [Skotlex]
 			// break;
-
+			case SC_FULLINVINCIBLE:
+			break;
 		case SC_MERC_FLEEUP:
 		case SC_MERC_ATKUP:
 		case SC_MERC_HITUP:
