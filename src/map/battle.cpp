@@ -9193,8 +9193,8 @@ int battle_check_target( struct block_list *src, struct block_list *target,int f
 				if( sc && sc->count ) {
 					if( sc->data[SC_VOICEOFSIREN] && sc->data[SC_VOICEOFSIREN]->val2 == target->id )
 						return -1;
-					if (sc->data[SC_FULLINVINCIBLE])
-						status_change_end(src, SC_FULLINVINCIBLE, INVALID_TIMER);
+					//if (sc->data[SC_FULLINVINCIBLE])
+					//	status_change_end(src, SC_FULLINVINCIBLE, INVALID_TIMER);
 				}
 			}
 			break;
